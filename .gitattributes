@@ -1,0 +1,9 @@
+# Ignore static files from language stats
+*.css linguist-vendored
+*.js linguist-vendored
+*.html linguist-vendored
+*.htm linguist-vendored
+/static/* linguist-vendored
+
+# Ignore Django migrations
+*/migrations/* linguist-generated
