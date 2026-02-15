@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-))wyh--#^#bwu1!%owr5fa1+p*9_8b%ovc*(mk+*jn6iop$^@t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['persian-gulf.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
