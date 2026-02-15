@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w^3xhcem744=hyg4-zxwf5&e-o)qox(xg4-3+i)!!q9ak974@8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("RENDER") != "true"
+DEBUG = False
 
 ALLOWED_HOSTS = ['persian-gulf.onrender.com']
 
@@ -123,9 +123,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 
 # STATICFILES_URLS = ['static/']
