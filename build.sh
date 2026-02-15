@@ -1,19 +1,10 @@
 #!/usr/bin/env bash
 
-# نصب وابستگی‌ها
+echo "Installing dependencies"
 pip install -r requirements.txt
 
-# اعمال مهاجرت‌ها
+echo "Applying migrations"
 python manage.py migrate
 
-# ساخت superuser (اختیاری، فقط اگر لازم داری)
-# export DJANGO_SUPERUSER_USERNAME=admin
-# export DJANGO_SUPERUSER_EMAIL=admin@example.com
-# export DJANGO_SUPERUSER_PASSWORD=yourpassword
-# python manage.py createsuperuser --noinput
-
-# اطمینان از وجود پوشه static
-mkdir -p static
-
-# جمع‌آوری فایل‌های استاتیک
+echo "Collecting static files"
 python manage.py collectstatic --noinput
