@@ -40,26 +40,60 @@
 # ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # urls.py
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+# from django.http import HttpResponse
+# from django.urls import path
+# import os
+
+# def reset_admin(request):
+#     # مقادیر دلخواه خودت برای ورود
+#     username = "admin"
+#     email = "myadmin@example.com"
+#     password = "123456789"
+
+#     if User.objects.filter(username=username).exists():
+#         user = User.objects.get(username=username)
+#         user.set_password(password)  # پسورد رو ریست می‌کنیم
+#         user.save()
+#         return HttpResponse("Admin password reset!")
+#     else:
+#         User.objects.create_superuser(username=username, email=email, password=password)
+#         return HttpResponse("Admin created!")
+
+# urlpatterns += [
+#     path("reset-admin/", reset_admin),
+# ]
+# urls.py
+from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from django.http import HttpResponse
-from django.urls import path
+from django.contrib.auth.models import User
+
 import os
 
+# Route امن برای ساخت یا ریست Admin
 def reset_admin(request):
-    # مقادیر دلخواه خودت برای ورود
     username = "admin"
     email = "myadmin@example.com"
     password = "123456789"
 
+    # اگر یوزر وجود دارد، فقط پسوردش رو ریست کن
     if User.objects.filter(username=username).exists():
         user = User.objects.get(username=username)
-        user.set_password(password)  # پسورد رو ریست می‌کنیم
+        user.set_password(password)
         user.save()
         return HttpResponse("Admin password reset!")
+    # در غیر این صورت بساز
     else:
         User.objects.create_superuser(username=username, email=email, password=password)
         return HttpResponse("Admin created!")
 
-urlpatterns += [
-    path("reset-admin/", reset_admin),
-]
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('shop.urls')),
+    path('cart/', include('cart.urls')),
+    path('payment/', include('payment.urls')),
+    path('reset-admin/', reset_admin),  # اضافه کردیم
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
