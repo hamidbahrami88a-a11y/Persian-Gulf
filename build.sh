@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
-
-echo "Installing dependencies"
-pip install -r requirements.txt
-
-echo "Applying migrations"
+set -o errexit
+pip install -r requirements.tex
 python manage.py migrate
-
-echo "Collecting static files"
+python manage.py createsuperuser --noinput
 python manage.py collectstatic --noinput
