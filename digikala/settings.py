@@ -1,6 +1,7 @@
 from pathlib import Path
 import os 
 import dj_database_url
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,8 +31,19 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'shop',
     'cart',
-    'payment'
+    'payment',
+    'cloudinary',
+    'cloudinary_storage',
 ]
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dtd1axhpi',
+    'API_KEY': '649432772152115',
+    'API_SECRET': 'GPEqRUP30vO-HU3DKM7pMaOf0ko',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
